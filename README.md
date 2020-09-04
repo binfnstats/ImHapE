@@ -5,7 +5,7 @@ This repository contains code for *image-based haplotype-guided evolutionary inf
 ### Overview
 ---
 
-IHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models  exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model), but can be adapted to any non-recombining genome.
+IHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models an exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model), but can be adapted to any non-recombining genome.
 
 ### Getting started
 ---
@@ -26,9 +26,9 @@ neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 
 
 - The parameters are replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters.
 
-**Note**: If you would like to perform many simulations simultaneously and automatically save output in the numpy format, you can run `exec.py` from the command line.
+**Note**: If you would like to perform many simulations with `simulation.py` and automatically save the output in numpy format, you can run `exec.py` from the command line.
 
 <pre><code>python3 exec.py -r 2.02 -w 1 -x 1 -p 0 -u 1e-2 -i 110 -gs 1000 -g 250 -ms 1e5 -n 250 -out ./output_folder/
 </code></pre>
 
-`exec.py` will return simulation formatted [fitness]\_[id]\_[time].npy for further scripts e.g. 1.05_7092001_18.npy
+The example above generates 250 unique simulations and saves output in the output folder (Note: / is required at end of output folder). `exec.py` will return simulation formatted as [fitness]\_[id]\_[time].npy for further scripts e.g. 1.05_7092001_18.npy
