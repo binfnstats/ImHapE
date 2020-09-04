@@ -12,7 +12,7 @@ IHapE is written in python and uses numpy to generate haplotype arrays. Any simu
 
 Inferences require four basic steps: (1) simulations; (2) training the CNN; and (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary model. 
 
-##### (1) Simulations
+#### (1) Simulations
 
 - Simulations require one script, simulation.py (Note: virus.py must be accessible to simulation.py as it defines classes used within the function)
 
@@ -21,10 +21,8 @@ from virus import Virus, Population
 from simulation import simulateViralEvolution
 
 neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 1e-4, initSize = 250, genomeSize = 5000)
-
 ```
-
-- The parameters are replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters.
+<sub>The parameters are replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters. </sub>
 
 - **Note**: If you would like to perform many simulations with `simulation.py` and automatically save the output in numpy format, you can run `exec.py` from the command line.
 
@@ -32,3 +30,21 @@ neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 
 </code></pre>
 
 - The example above generates 250 unique simulations and saves output in the output folder (Note: / is required at end of output folder). `exec.py` will return each simulation formatted as [fitness]\_[id]\_[time].npy e.g. 1.05_7092001_18.npy. If you plan on using further scripts please do not change the [fitness] position. 
+
+#### (2) Training a CNN
+
+- We implemented a CNN in tensorflow to analyze aligned haplotype data. We additionaly provide an option to sort positions by mutation frequency using the `flip = True` option in the `model.py -> sampleData` function. Sorting positions has previously been shown to improve alignment based CNN inferences. 
+
+- To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
+
+```python
+import model as mod
+
+haplotypes, modes = mod.mergeData(positive_dir = ./positive_haplotypes/, neutral_dir = ./neutral_haplotypes, n = 100)
+train_dataset, test_dataset = trainTestData(haplotypes = haplotypes, modes = modes, p = 0.2)
+```
+- The parameters for `mergeData` are the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples per mode (n). The parameters for `trainTestData` are the haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.
+
+
+
+
