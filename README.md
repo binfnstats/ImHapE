@@ -5,7 +5,7 @@ This repository contains code for *image-based haplotype-guided evolutionary inf
 ### Overview
 ---
 
-IHapE is written and python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models  exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model), but can be adapted to any non-recombining genome.
+IHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models  exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model), but can be adapted to any non-recombining genome.
 
 ### Getting started
 ---
@@ -14,7 +14,7 @@ Inferences require four basic steps: (1) simulations; (2) training the CNN; and 
 
 ##### (1) Simulations
 
-- Simulations require two scripts, virus.py (defines Virus and Population classes) and simulation.py (generates simulated data)
+- Simulations require one script, simulation.py (Note: virus.py must be accessible to simulation.py as it defines classes used within the function)
 
 ```python
 from virus import Virus, Population
@@ -24,7 +24,7 @@ neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 
 
 ```
 
-- The parameters are replication rate (r), death rate (x), fitness (w), probability of a beneficial mutation (probBen; multiplied by mutation rate), mutation rate (mutRate), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters.
+- The parameters are replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters.
 
 **Note**: If you would like to perform many simulations simultaneously and automatically save output in the numpy format, you can run `exec.py` from the command line.
 
