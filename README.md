@@ -28,7 +28,7 @@ If you would like to perform many simulations with `simulation.py` and automatic
 <pre><code>python3 exec.py -r 2.02 -w 1 -x 1 -p 0 -u 1e-2 -i 110 -gs 1000 -g 250 -ms 1e5 -n 250 -out ./output_folder/
 </code></pre>
 
-<sub>*\**The example above generates 250 unique simulations and saves output in the output folder (Note: / is required at end of output folder). `exec.py` will return each simulation formatted as [fitness]\_[id]\_[time].npy e.g. 1.05_7092001_18.npy. If you plan on using further scripts please do not change the [fitness] position. </sub>
+<sub>*\** The example above generates 250 unique simulations and saves output in the output folder (Note: / is required at end of output folder). `exec.py` will return each simulation formatted as [fitness]\_[id]\_[time].npy e.g. 1.05_7092001_18.npy. If you plan on using further scripts please do not change the [fitness] position. </sub>
 
 #### (2) Training a CNN
 
@@ -40,7 +40,7 @@ import model as mod
 haplotypes, modes = mod.mergeData(positive_dir = ./positive_haplotypes/, neutral_dir = ./neutral_haplotypes, n = 100)
 train_dataset, test_dataset = trainTestData(haplotypes = haplotypes, modes = modes, p = 0.2)
 ```
-<sub>*\**The parameters for `mergeData` are the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples per mode (n). The parameters for `trainTestData` are the haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
+<sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples per mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
 
 
 
