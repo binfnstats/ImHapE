@@ -10,18 +10,20 @@ IHapE is written in python and uses numpy to generate haplotype arrays. Any simu
 ### Getting started
 ---
 
-Inferences require four basic steps: (1) simulations; (2) training the CNN; and (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary model. 
+Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; and (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary model. 
 
 #### (1) Simulations
 
-Simulations require one primary script, `simulation.py`, and one background script, `virus.py`
+Simulations requires two scripts: `simulation.py` and `model.py` which define the evolutionary simulation and the sampling scheme to generate simulated haplotypes.  
 
 ```python
 from simulation import simulateViralEvolution
+import model as mod
 
 neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 1e-4, initSize = 250, genomeSize = 5000)
+haplotypes, modes = mod.sampleData(sims = neutral, size = 200, reps = 1, flip = True)
 ```
-<sub>*\** Parameter description: replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters. </sub>
+<sub>*\** Parameter description: `simulateViralEvolution`, replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters. `sampleData`, the simulation (sims), the the height of the image or number of aligned haplotypes (size), the number of random samples from the population (reps), sort positions by frequency of mutations (flip) </sub>
 
 If you would like to perform many simulations with `simulation.py` and automatically save the output in numpy format, you can run `exec.py` from the command line.
 
@@ -32,7 +34,7 @@ If you would like to perform many simulations with `simulation.py` and automatic
 
 #### (2) Training a CNN
 
-We implemented a CNN in tensorflow to analyze aligned haplotype data. We additionaly provide an option to sort positions by mutation frequency using the `flip = True` option in the `model.py -> sampleData` function. Sorting positions has previously been shown to improve alignment based CNN inferences. To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
+We implemented a CNN in tensorflow to analyze aligned haplotype data. To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
 
 ```python
 import model as mod
@@ -40,7 +42,11 @@ import model as mod
 haplotypes, modes = mod.mergeData(positive_dir = ./positive_haplotypes/, neutral_dir = ./neutral_haplotypes, n = 100)
 train_dataset, test_dataset = trainTestData(haplotypes = haplotypes, modes = modes, p = 0.2)
 ```
-<sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples per mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
+<sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples of each evolutionary mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
+
+(3) Converting empirical haplotypes into numpy arrays
+
+This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of haplotypes, genome or haplotype size). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `mergeData(n = N)` call as that defines how many 
 
 
 
