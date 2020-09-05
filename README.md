@@ -40,7 +40,7 @@ We implemented a CNN with L2 regularization in tensorflow to analyze aligned hap
 import model as mod
 
 haplotypes, modes = mod.mergeData(positive_dir = ./positive_haplotypes/, neutral_dir = ./neutral_haplotypes, n = 100)
-train_dataset, test_dataset = trainTestData(haplotypes = haplotypes, modes = modes, p = 0.2)
+train_dataset, test_dataset = mod.trainTestData(haplotypes = haplotypes, modes = modes, p = 0.2)
 ```
 <sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples of each evolutionary mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
 
@@ -48,7 +48,7 @@ Once training and test data is generated, training the model is a simple functio
 ```python
 import model as mod
 
-model, history, test_loss, test_acc = trainCNN(train = train_dataset, test = test_dataset)
+model, history, test_loss, test_acc = mod.trainCNN(train = train_dataset, test = test_dataset)
 ```
 <sub>*\** If you would like to try out a different network architecture, please modify `trainCNN` in `model.py`</sub>
 
