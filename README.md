@@ -34,7 +34,7 @@ If you would like to perform many simulations with `simulation.py` and automatic
 
 #### (2) Training a CNN
 
-We implemented a CNN in tensorflow to analyze aligned haplotype data. To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
+We implemented a CNN with L2 regularization in tensorflow to analyze aligned haplotype data. To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
 
 ```python
 import model as mod
@@ -44,9 +44,18 @@ train_dataset, test_dataset = trainTestData(haplotypes = haplotypes, modes = mod
 ```
 <sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples of each evolutionary mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
 
-(3) Converting empirical haplotypes into numpy arrays
+Once training and test data is generated, training the model is a simply function call.
+```python
+import model as mod
 
-This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of haplotypes, genome or haplotype size). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `mergeData(n = N)` call as that defines how many 
+model, history, test_loss, test_acc = trainCNN(train = train_dataset, test = test_dataset)
+```
+<sub>*\** If you would like to try out a different network architecture, please modify `trainCNN` in `model.py`</sub>
+
+
+#### (3) Converting empirical haplotypes into numpy arrays
+
+This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of haplotypes, genome or haplotype size). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `sampleData(size = N)` call as that defines how many aligned haplotypes per image.
 
 
 
