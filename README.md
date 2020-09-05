@@ -10,7 +10,7 @@ IHapE is written in python and uses numpy to generate haplotype arrays. Any simu
 ### Getting started
 ---
 
-Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; and (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary model. 
+Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; and (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary models. 
 
 #### (1) Simulations
 
@@ -44,7 +44,7 @@ train_dataset, test_dataset = trainTestData(haplotypes = haplotypes, modes = mod
 ```
 <sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples of each evolutionary mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation.</sub>
 
-Once training and test data is generated, training the model is a simply function call.
+Once training and test data is generated, training the model is a simple function call.
 ```python
 import model as mod
 
@@ -57,6 +57,8 @@ model, history, test_loss, test_acc = trainCNN(train = train_dataset, test = tes
 
 This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of haplotypes, genome or haplotype size). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `sampleData(size = N)` call as that defines how many aligned haplotypes per image.
 
+#### (4) Predicting evolutionary models
 
+Coming soon.
 
 
