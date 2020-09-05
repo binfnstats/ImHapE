@@ -10,7 +10,7 @@ IHapE is written in python and uses numpy to generate haplotype arrays. Any simu
 ### Getting started
 ---
 
-Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; and (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary models. 
+Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary models. 
 
 #### (1) Simulations
 
