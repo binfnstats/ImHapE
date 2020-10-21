@@ -75,4 +75,4 @@ python3 slide.py -gl 29903 -ss 5 -as 1000 -bs 50 -ns 10 -g 'country' -s 'Wales' 
 ### Contact
 ---
 
-If you have any questions or concerns, please email t.ouellette@mail.utoronto.ca.
+If you have any questions, please email t.ouellette@mail.utoronto.ca.
