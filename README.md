@@ -23,7 +23,6 @@ import model as mod
 neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 1e-4, initSize = 250, genomeSize = 5000)
 haplotypes, modes = mod.sampleData(sims = neutral, size = 200, reps = 1, flip = True)
 ```
-<sub>*\** Parameter description: `simulateViralEvolution`, replication rate (r), death rate (x), fitness (w), mutation rate (mutRate), probability of a beneficial mutation (probBen; beneficial mutation rate equals mutRate \* probBen), initial population size (initSize), haplotype or genome size (genomeSize). Check `simulation.py` to see other default parameters. `sampleData`, the simulation (sims), the the height of the image or number of aligned haplotypes (size), the number of random samples from the population (reps), sort positions by frequency of mutations (flip)</sub>
 
 If you would like to perform many simulations with `simulation.py` and automatically save the output in numpy format, you can run `exec.py` from the command line.
 
@@ -42,7 +41,6 @@ import model as mod
 haplotypes, modes = mod.mergeData(positive_dir = ./positive_haplotypes/, neutral_dir = ./neutral_haplotypes, n = 100)
 train_dataset, test_dataset = mod.trainTestData(haplotypes = haplotypes, modes = modes, p = 0.2)
 ```
-<sub>*\** Parameter description: `mergeData`, the directory containing your positive simulations (positive_dir), the directory containing your neutral simulations (neutral_dir), and the number of samples of each evolutionary mode (n); `trainTestData`, haplotypes and modes generated from mergeData and the proportion of the data you are setting aside for testing/validation (p)</sub>
 
 Once training and test data is generated, training the model is a simple function call.
 ```python
@@ -50,12 +48,12 @@ import model as mod
 
 model, history, test_loss, test_acc = mod.trainCNN(train = train_dataset, test = test_dataset)
 ```
-<sub>*\** If you would like to try out a different network architecture, please modify `trainCNN` in `model.py`</sub>
+<sub>*\** If you would like to try out a different network architecture, please modify the `trainCNN` function in `model.py`</sub>
 
 
 #### (3) Converting empirical haplotypes into numpy arrays
 
-This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of haplotypes, genome or haplotype size). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `sampleData(size = N)` call as that defines how many aligned haplotypes per image.
+This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of rows equal to number of sampled haplotypes and number of columns equal to length of haplotypes in base pairs). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `sampleData(size = N)` call as that defines how many aligned haplotypes per image.
 
 #### (4) Predicting evolutionary models
 
