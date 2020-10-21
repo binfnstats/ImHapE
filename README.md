@@ -50,6 +50,12 @@ import model as mod
 
 model, history, test_loss, test_acc = mod.trainCNN(train = train_dataset, test = test_dataset)
 ```
+
+To run use the command-line for training, please use the script `cnn.py`.
+```python
+python3 cnn.py --positive /positive_simulations/ --neutral /neutral_simulations/ -p 0.17 --out /models/ --num 12000
+```
+
 <sub>*\** If you would like to try out a different network architecture, please modify the `trainCNN` function in `model.py`</sub>
 
 
