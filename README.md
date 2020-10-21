@@ -36,7 +36,7 @@ python3 exec.py -r 2.02 -w 1 -x 1 -p 0 -u 1e-2 -i 110 -gs 1000 -g 250 -ms 1e5 -n
 
 #### (2) Training a CNN
 
-We implemented a CNN with L2 regularization in tensorflow to analyze aligned haplotype data. To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
+We implemented a CNN with L1 and L2 regularization in tensorflow to analyze aligned haplotype data. To train the CNN, the simulated haplotypes must be converted into training and test data. This involves two steps using functions from `model.py`
 
 ```python
 import model as mod
