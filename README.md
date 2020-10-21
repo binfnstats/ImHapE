@@ -1,16 +1,18 @@
 # Image-based haplotype-guided evolutionary inference <img align="right" width="150" height="150" src="https://github.com/tomouellette/IHapE/blob/master/icon.svg">
 
-This repository contains code for *image-based haplotype-guided evolutionary inferences* for populations with phased genomes. **IHapE** treats evolutionary inference as an image recognition problem, harnessing the power of convolutional neural networks. Images are formed by aligning haplotypes, or entire genomes together, to make evolutionary inferences.
+This repository contains code for *image-based haplotype-guided evolutionary inferences* for populations with phased genomes (**IHapE**). 
 
 ### Overview
 ---
 
-IHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models an exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model), but can be adapted to any non-recombining genome.
+IHapE treats evolutionary inference as an image recognition problem, harnessing the power of convolutional neural networks. Images are formed by aligning haplotypes, or entire genomes together, to make evolutionary inferences. IHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models an exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model) but can be adapted to any non-recombining genome.
 
 ### Getting started
 ---
 
 Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary models. 
+
+A complete description of command-line arguments are provided in the documentation (`/doc/description.pdf`). We provide some basic usage below. 
 
 #### (1) Simulations
 
@@ -51,12 +53,19 @@ model, history, test_loss, test_acc = mod.trainCNN(train = train_dataset, test =
 <sub>*\** If you would like to try out a different network architecture, please modify the `trainCNN` function in `model.py`</sub>
 
 
-#### (3) Converting empirical haplotypes into numpy arrays
+#### (3a) Converting empirical haplotypes into numpy arrays
 
 This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of rows equal to number of sampled haplotypes and number of columns equal to length of haplotypes in base pairs). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `sampleData(size = N)` call as that defines how many aligned haplotypes per image.
 
-#### (4) Predicting evolutionary models
+#### (3b) Predicting evolutionary models
 
-Coming soon.
+We implement a sliding window approach to identify specific loci under selection in empirical data: slide.py. 
 
+```python
+python3 slide.py -gl 29903 -ss 5 -as 1000 -bs 50 -ns 10 -g 'country' -s 'Wales' -mon 3 -geo covid_ids.csv -m CNN.tf -d /haplotypes/ -out /sliding_output/ -back 'False'
+```
 
+### Contact
+---
+
+If you have any questions or concerns, please email t.ouellette@mail.utoronto.ca.
