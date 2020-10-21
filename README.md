@@ -10,7 +10,7 @@ IHapE treats evolutionary inference as an image recognition problem, harnessing 
 ### Getting started
 ---
 
-Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; (3) converting empirical haplotypes into numpy arrays; (4) predicting evolutionary models. 
+Evolutionary inference requires four basic steps: (1) simulations; (2) training the CNN; (3a) converting empirical haplotypes into numpy arrays; (3b) sliding window analysis to detect selected loci. 
 
 A complete description of command-line arguments are provided in the documentation (`/doc/description.pdf`). We provide some basic usage below. 
 
@@ -64,7 +64,7 @@ python3 cnn.py --positive /positive_simulations/ --neutral /neutral_simulations/
 
 This task is dependent on your data, but the numpy array should share the same dimensions as your simulated data e.g (number of rows equal to number of sampled haplotypes and number of columns equal to length of haplotypes in base pairs). The genome or haplotype size is defined by the `simulateViralEvolution(genomeSize = M)` call and the number of haplotypes is determined by `sampleData(size = N)` call as that defines how many aligned haplotypes per image.
 
-#### (3b) Predicting evolutionary models
+#### (3b) Sliding window analysis to detect selected loci
 
 We implement a sliding window approach to identify specific loci under selection in empirical data: slide.py. 
 
