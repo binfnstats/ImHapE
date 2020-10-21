@@ -23,13 +23,14 @@ from simulation import simulateViralEvolution
 import model as mod
 
 neutral = simulateViralEvolution(r = 2.02, x = 1, w = 1, probBen = 0, mutRate = 1e-4, initSize = 250, genomeSize = 5000)
-haplotypes, modes = mod.sampleData(sims = neutral, size = 200, reps = 1, flip = True)
+haplotypes, modes = mod.sampleData(sims = neutral, size = 200, reps = 1, sort_row = False, sort_col = True)
 ```
 
 If you would like to perform many simulations with `simulation.py` and automatically save the output in numpy format, you can run `exec.py` from the command line.
 
-<pre><code>python3 exec.py -r 2.02 -w 1 -x 1 -p 0 -u 1e-2 -i 110 -gs 1000 -g 250 -ms 1e5 -n 250 -out ./output_folder/
-</code></pre>
+```bash
+python3 exec.py -r 2.02 -w 1 -x 1 -p 0 -u 1e-2 -i 110 -gs 1000 -g 250 -ms 1e5 -n 250 -out ./output_folder/
+```
 
 <sub>*\** The example above generates 250 unique simulations and saves output in the output folder (Note: / is required at end of output folder). `exec.py` will return each simulation formatted as [fitness]\_[id]\_[time].npy e.g. 1.05_7092001_18.npy. If you plan on using further scripts please do not change the [fitness] position. </sub>
 
@@ -52,7 +53,7 @@ model, history, test_loss, test_acc = mod.trainCNN(train = train_dataset, test =
 ```
 
 To run use the command-line for training, please use the script `cnn.py`.
-```python
+```bash
 python3 cnn.py --positive /positive_simulations/ --neutral /neutral_simulations/ -p 0.17 --out /models/ --num 12000
 ```
 
@@ -67,7 +68,7 @@ This task is dependent on your data, but the numpy array should share the same d
 
 We implement a sliding window approach to identify specific loci under selection in empirical data: slide.py. 
 
-```python
+```bash
 python3 slide.py -gl 29903 -ss 5 -as 1000 -bs 50 -ns 10 -g 'country' -s 'Wales' -mon 3 -geo covid_ids.csv -m CNN.tf -d /haplotypes/ -out /sliding_output/ -back 'False'
 ```
 
