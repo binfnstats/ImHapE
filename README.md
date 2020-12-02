@@ -1,11 +1,11 @@
 # Image-based haplotype-guided evolutionary inference <img align="right" width="150" height="150" src="https://github.com/tomouellette/IHapE/blob/master/icon.svg">
 
-This repository contains code for *image-based haplotype-guided evolutionary inferences* for populations with phased genomes (**IHapE**). 
+This repository contains code for *image-based haplotype-guided evolutionary inferences* for populations with phased genomes (**ImHapE**). 
 
 ### Overview
 ---
 
-IHapE treats evolutionary inference as an image recognition problem, harnessing the power of convolutional neural networks. Images are formed by aligning haplotypes, or entire genomes together, to make evolutionary inferences. IHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models an exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model) but can be adapted to any non-recombining genome.
+ImHapE treats evolutionary inference as an image recognition problem, harnessing the power of convolutional neural networks. Images are formed by aligning haplotypes, or entire genomes together, to make evolutionary inferences. ImHapE is written in python and uses numpy to generate haplotype arrays. Any simulation software can be used to generate haplotypes for analysis, but we provide a simple evolutionary simulation framework that models an exponentially growing population under a a random birth-death process. It was developed for modeling SARS-CoV-2 evolution (allows for back mutations under a neutral model) but can be adapted to any non-recombining genome.
 
 ### Getting started
 ---
