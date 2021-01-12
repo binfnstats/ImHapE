@@ -36,3 +36,11 @@ Most functions can be found within model.py. As stated above, any simulation sof
 ---
 
 If you have any questions, please email t.ouellette@mail.utoronto.ca.
+
+### A few references to other papers using CNN/RNN approaches in population genetics
+
+[i] ImaGene: a convolutional neural network to quantify natural selection from genomic data. *BMC Bioinformatics*. Torada et al. (2019)
+
+[ii] The Unreasonable Effectiveness of Convolutional Neural Networks in Population Genetic Inference. *Molecular Biology and Evolution*. Flagel et al. (2018)
+
+[iii] Inferring the landscape of recombination using recurrent neural networks. *bioRxiv*. Adrion et al. (2019)
