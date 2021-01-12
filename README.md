@@ -39,11 +39,9 @@ If you have any questions, please email t.ouellette@mail.utoronto.ca.
 
 ---
 <b>A few references to other papers using CNN/RNN approaches in population genetics</b>
-<sub>
 
-i. ImaGene: a convolutional neural network to quantify natural selection from genomic data. *BMC Bioinformatics*. Torada et al. (2019)
+<sub>i. ImaGene: a convolutional neural network to quantify natural selection from genomic data. *BMC Bioinformatics*. Torada et al. (2019)</sub>
 
-ii. The Unreasonable Effectiveness of Convolutional Neural Networks in Population Genetic Inference. *Molecular Biology and Evolution*. Flagel et al. (2018)
+<sub>ii. The Unreasonable Effectiveness of Convolutional Neural Networks in Population Genetic Inference. *Molecular Biology and Evolution*. Flagel et al. (2018)</sub>
 
-iii. Inferring the landscape of recombination using recurrent neural networks. *bioRxiv*. Adrion et al. (2019)
-</sub>
+<sub>iii. Inferring the landscape of recombination using recurrent neural networks. *bioRxiv*. Adrion et al. (2019)</sub>
