@@ -28,7 +28,7 @@ python3 exec.py -r 2.02 -w 1 -x 1 -p 0 -u 1e-2 -i 110 -gs 1000 -g 250 -ms 1e5 -n
 ### Making inferences
 ---
 
-If you would like to build your own CNN/RNN models, you must (i) simulate thousands of genomic windows of length N (e.g. 2500 bp) under a set of realistic parameters (simulation.py), (ii) train CNNs on the small genomic windows (cnn.py), (iii) run sliding window analysis on full 29903 bp genomes (genome.py), (iii) train RNN on sliding window estimates across simulated genomes. We note that, at this time, it is likely only feasible to simulate data and train models if you have access to a compute cluster.
+If you would like to build your own CNN/RNN models, you must (i) simulate thousands of genomic windows of length N (e.g. 2500 bp) under a set of realistic parameters (simulation.py), (ii) train CNNs on the small genomic windows (cnn.py), (iii) run sliding window analysis on full 29903 bp genomes (genome.py), (iii) train RNN on sliding window estimates across simulated genomes. This pipeline is ideally run on a compute cluster.
 
 Most functions can be found within model.py. As stated above, any simulation software can be used as long as you convert your simulated haplotypes/alignments to numpy format. 
 
