@@ -40,6 +40,9 @@ Lots of potential avenues to improve inferences, feel free to use the code howev
 If you have any questions, please email t.ouellette@mail.utoronto.ca.
 
 ---
+
+Preprint is available at https://www.biorxiv.org/content/10.1101/2021.01.13.426571v1.
+
 <b>A few references to other papers using CNN/RNN approaches in population genetics</b>
 
 <sub>i. ImaGene: a convolutional neural network to quantify natural selection from genomic data. *BMC Bioinformatics*. Torada et al. (2019)</sub>
