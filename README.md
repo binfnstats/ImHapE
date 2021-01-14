@@ -32,6 +32,8 @@ If you would like to build your own CNN/RNN models, you must (i) simulate thousa
 
 Most functions can be found within model.py. As stated above, any simulation software can be used as long as you convert your simulated haplotypes/alignments to numpy format. 
 
+Lots of potential avenues to improve inferences, feel free to use the code however you see fit. And always open to comments!
+
 ### Contact
 ---
 
